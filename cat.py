@@ -1,11 +1,21 @@
 import json
+# 接受参数
+import sys
 
-notebook1 = open('Untitled1.ipynb')
+notebook_path1 = sys.argv[1]
+notebook_path2 = sys.argv[2]
+
+
+
+
+
+
+notebook1 = open(notebook_path1)
 notebook1_str = notebook1.read()
 notebook1_json = json.loads(notebook1_str)
 
 cells1 = notebook1_json['cells']
-notebook2 = open('Untitled2.ipynb')
+notebook2 = open(notebook_path2)
 notebook2_str = notebook2.read()
 notebook2_json = json.loads(notebook2_str)
 
