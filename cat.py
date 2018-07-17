@@ -1,14 +1,24 @@
 import json
 # 接受参数
 import sys
-
-notebook_path1 = sys.argv[1]
-notebook_path2 = sys.argv[2]
-
+#accept argument list
+notebook_path1_lst = sys.argv[1:]
 
 
+cells_lst = []
+
+for path in notebook_path1_lst:
+    notebook = open(path)
+    notebook_str = notebook.read()
+    notebook_str = notebook.read()
+    notebook_json = json.loads(notebook_str) 
+    cells = notebook_json['cells']
+    cells_lst += cells
 
 
+    
+target_notebook = {}
+target_notebook['cells'] = cells_lst
 
 notebook1 = open(notebook_path1)
 notebook1_str = notebook1.read()
@@ -24,7 +34,7 @@ target_cells = cells1 + cells2
 
 del notebook1_json['cells']
 target_notebook = {}
-target_notebook['cells'] = target_cells
+target_notebook['cells'] = cells_lst
 target_notebook.update(notebook1_json)
 
 
