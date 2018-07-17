@@ -1,6 +1,20 @@
 import json
 # 接受参数
 import sys
+
+
+# handle argument exceptions
+if len(sys.argv)<3:
+    raise Exception('老铁 参数数量必须大于2 ！')
+
+
+
+
+
+
+
+
+
 #accept argument list
 notebook_path1_lst = sys.argv[1:]
 
@@ -14,7 +28,8 @@ for path in notebook_path1_lst:
     notebook_json = json.loads(notebook_str) 
     cells = notebook_json['cells']
     cells_lst += cells
-
+    # close 是关闭文件 文件打开后需要关闭 一直打开会造成资源浪费
+    notebook.close()
 
    
 target_notebook = {}
