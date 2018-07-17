@@ -67,5 +67,5 @@ target_notebook.update(notebook_1)
 target_json = json.dumps(target_notebook)
 
 # target = open('target_notebook.ipynb','w')
-with open(target_notebook) as endnotebook:
+with open('target_notebook.ipynb','w') as endnotebook:
    endnotebook.write(target_json)
