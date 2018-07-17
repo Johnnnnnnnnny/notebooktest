@@ -22,14 +22,17 @@ notebook_path1_lst = sys.argv[1:]
 cells_lst = []
 
 for path in notebook_path1_lst:
-    notebook = open(path)
-    notebook_str = notebook.read()
+    # with相当于open和close
+    with open(path) as notebook:
     
-    notebook_json = json.loads(notebook_str) 
-    cells = notebook_json['cells']
-    cells_lst += cells
-    # close 是关闭文件 文件打开后需要关闭 一直打开会造成资源浪费
-    notebook.close()
+    
+      notebook_str = notebook.read()
+    
+      notebook_json = json.loads(notebook_str) 
+      cells = notebook_json['cells']
+      cells_lst += cells
+   
+    
 
    
 target_notebook = {}
@@ -63,5 +66,6 @@ target_notebook.update(notebook_1)
 
 target_json = json.dumps(target_notebook)
 
-target = open('target_notebook.ipynb','w')
-target.write(target_json)
+# target = open('target_notebook.ipynb','w')
+with open(target_notebook) as endnotebook:
+   endnotebook.write(target_json)
