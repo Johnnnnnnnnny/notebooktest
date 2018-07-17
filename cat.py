@@ -10,16 +10,17 @@ cells_lst = []
 for path in notebook_path1_lst:
     notebook = open(path)
     notebook_str = notebook.read()
-    notebook_str = notebook.read()
+    
     notebook_json = json.loads(notebook_str) 
     cells = notebook_json['cells']
     cells_lst += cells
 
 
-    
+   
 target_notebook = {}
 target_notebook['cells'] = cells_lst
 
+'''
 notebook1 = open(notebook_path1)
 notebook1_str = notebook1.read()
 notebook1_json = json.loads(notebook1_str)
@@ -37,7 +38,12 @@ target_notebook = {}
 target_notebook['cells'] = cells_lst
 target_notebook.update(notebook1_json)
 
-
+'''
+notebook_1 = json.loads(open(sys.argv[1]).read())
+del notebook_1['cells']
+target_notebook = {}
+target_notebook['cells'] = cells_lst
+target_notebook.update(notebook_1)
 
 
 target_json = json.dumps(target_notebook)
