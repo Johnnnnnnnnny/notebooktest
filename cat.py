@@ -15,6 +15,11 @@ if len(sys.argv)<3:
 
 
 
+
+
+
+
+
 #accept argument list
 notebook_path1_lst = sys.argv[1:]
 
@@ -32,7 +37,30 @@ for path in notebook_path1_lst:
       cells = notebook_json['cells']
       cells_lst += cells
    
+
+# 写类
+class Notebook:
+    def __init__(self,cell):
+        self.cell = cell
     
+    
+    
+    def __getitem__(self,index):
+        return self[index]
+    
+note = Notebook(cells_lst)
+
+
+
+
+
+
+
+
+
+
+
+
 
    
 target_notebook = {}
